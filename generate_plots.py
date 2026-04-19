@@ -63,3 +63,43 @@ def plot_scatter(sensor_a, sensor_b, timestamps, ax):
 
     ax.legend()
     ax.grid(True, alpha=0.3)
+def plot_histogram(sensor_a, sensor_b, ax):
+    """Plot histogram of sensor readings.
+
+    Parameters
+    ----------
+    sensor_a : numpy.ndarray
+    sensor_b : numpy.ndarray
+    ax : matplotlib.axes.Axes
+
+    Returns
+    -------
+    None
+    """
+    ax.hist(sensor_a, bins=20, alpha=0.5, label="Sensor A")
+    ax.hist(sensor_b, bins=20, alpha=0.5, label="Sensor B")
+
+    ax.set_title("Histogram")
+    ax.set_xlabel("Temperature (°C)")
+    ax.set_ylabel("Frequency")
+
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+def plot_boxplot(sensor_a, sensor_b, ax):
+    """Plot boxplot of sensor readings.
+
+    Parameters
+    ----------
+    sensor_a : numpy.ndarray
+    sensor_b : numpy.ndarray
+    ax : matplotlib.axes.Axes
+
+    Returns
+    -------
+    None
+    """
+    ax.boxplot([sensor_a, sensor_b], labels=["Sensor A", "Sensor B"])
+
+    ax.set_title("Box Plot")
+    ax.set_ylabel("Temperature (°C)")
+    ax.grid(True, alpha=0.3)
