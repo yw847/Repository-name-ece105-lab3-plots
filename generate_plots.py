@@ -103,3 +103,16 @@ def plot_boxplot(sensor_a, sensor_b, ax):
     ax.set_title("Box Plot")
     ax.set_ylabel("Temperature (°C)")
     ax.grid(True, alpha=0.3)
+def main():
+    """Main function to generate plots and save figure."""
+    sensor_a, sensor_b, timestamps = generate_data(seed=6231)
+
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+
+    plot_scatter(sensor_a, sensor_b, timestamps, axes[0])
+    plot_histogram(sensor_a, sensor_b, axes[1])
+    plot_boxplot(sensor_a, sensor_b, axes[2])
+
+    plt.tight_layout()
+    plt.savefig("sensor_analysis.png", dpi=150, bbox_inches="tight")
+    plt.show()
