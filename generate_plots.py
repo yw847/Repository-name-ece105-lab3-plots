@@ -98,7 +98,7 @@ def plot_boxplot(sensor_a, sensor_b, ax):
     -------
     None
     """
-    ax.boxplot([sensor_a, sensor_b], labels=["Sensor A", "Sensor B"])
+    ax.boxplot([sensor_a, sensor_b], tick_labels=["Sensor A", "Sensor B"])
 
     ax.set_title("Box Plot")
     ax.set_ylabel("Temperature (°C)")
@@ -107,12 +107,16 @@ def main():
     """Main function to generate plots and save figure."""
     sensor_a, sensor_b, timestamps = generate_data(seed=6231)
 
-    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+    fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 
-    plot_scatter(sensor_a, sensor_b, timestamps, axes[0])
-    plot_histogram(sensor_a, sensor_b, axes[1])
-    plot_boxplot(sensor_a, sensor_b, axes[2])
+    plot_scatter(sensor_a, sensor_b, timestamps, axes[0, 0])
+    plot_histogram(sensor_a, sensor_b, axes[0, 1])
+    plot_boxplot(sensor_a, sensor_b, axes[1, 0])
 
+    axes[1, 1].axis("off")
+    axes[1, 1].set_title("Summary")
     plt.tight_layout()
     plt.savefig("sensor_analysis.png", dpi=150, bbox_inches="tight")
     plt.show()
+if __name__ == "__main__":
+    main()
