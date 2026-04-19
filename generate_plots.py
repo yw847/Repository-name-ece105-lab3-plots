@@ -37,3 +37,29 @@ def generate_data(seed):
     sensor_b = rng.normal(loc=27.0, scale=4.5, size=200)
     timestamps = rng.uniform(low=0.0, high=10.0, size=200)
     return sensor_a, sensor_b, timestamps
+# Create plot_scatter(sensor_a, sensor_b, timestamps, ax) that draws
+# the scatter plot from the notebook onto the given Axes object.
+# NumPy-style docstring. Modifies ax in place, returns None.
+def plot_scatter(sensor_a, sensor_b, timestamps, ax):
+    """Plot scatter of sensor readings over time.
+
+    Parameters
+    ----------
+    sensor_a : numpy.ndarray
+    sensor_b : numpy.ndarray
+    timestamps : numpy.ndarray
+    ax : matplotlib.axes.Axes
+
+    Returns
+    -------
+    None
+    """
+    ax.scatter(timestamps, sensor_a, label="Sensor A", alpha=0.6)
+    ax.scatter(timestamps, sensor_b, label="Sensor B", alpha=0.6)
+
+    ax.set_xlabel("Time (s)")
+    ax.set_ylabel("Temperature (°C)")
+    ax.set_title("Scatter Plot")
+
+    ax.legend()
+    ax.grid(True, alpha=0.3)
